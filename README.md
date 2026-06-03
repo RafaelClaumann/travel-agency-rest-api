@@ -93,4 +93,3 @@ Criar um endpoint que permita **excluir um determinado destino de viagem**.
 ## 🏆 Resultado Esperado
 
 Uma **API RESTful usando Java e Spring Boot** que ofereça todas as funcionalidades mencionadas, com endpoints implementados com os métodos HTTP apropriados e uma camada de serviço bem estruturada para processar as solicitações, seguindo todas as especificações descritas.
-```

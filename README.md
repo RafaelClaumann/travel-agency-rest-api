@@ -1,5 +1,7 @@
 # Desafio: API para Agência de Viagem
 
+<img width="624" height="720" alt="image" src="https://github.com/user-attachments/assets/a09178c3-b61d-4859-92dc-5cc41fd9ec44" />
+
 ## 📋 Informações da Entrega
 
 | Critério | Data e Hora |

@@ -9,13 +9,12 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Destination {
+public class TravelPackage {
 
     private Long id;
     private String name;
-    private String location;
     private String description;
-    private Double averageRating;
-    private Integer totalRatings;
+    private Double price;
+    private Destination destination;
 
 }

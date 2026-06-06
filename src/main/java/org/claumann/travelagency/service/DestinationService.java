@@ -18,25 +18,10 @@ public class DestinationService {
         this.destinationMapper = destinationMapper;
     }
 
-    /**
-     * Cadastra um novo destino de viagem.
-     * <p>
-     * PASSO A PASSO:
-     * 1. Receba o objeto Destination (model) como parâmetro.
-     * 2. Converta o model para entity usando o destinationMapper.toEntity().
-     * 3. Salve a entity no banco usando destinationRepository.save().
-     * 4. Converta a entity salva de volta para model usando o destinationMapper.toModel().
-     * 5. Retorne o model convertido.
-     * <p>
-     * DICA: O .save() do JpaRepository já retorna a entity salva com o ID gerado,
-     * por isso convertemos de volta para model após salvar e não antes.
-     * <p>
-     * BOAS PRÁTICAS:
-     * - O service nunca deve expor entities para fora — sempre retorne models.
-     * - Não faça validações de negócio aqui ainda, por enquanto só salve.
-     */
     public Destination create(final Destination destination) {
-        throw new UnsupportedOperationException("Implemente o cadastro de destino.");
+        var entity = destinationMapper.toEntity(destination);
+        var savedEntity = destinationRepository.save(entity);
+        return destinationMapper.toModel(savedEntity);
     }
 
     /**

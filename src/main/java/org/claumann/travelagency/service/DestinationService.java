@@ -63,25 +63,11 @@ public class DestinationService {
         return destinationMapper.toModel(updatedEntity);
     }
 
-    /**
-     * Exclui um destino pelo ID.
-     * <p>
-     * PASSO A PASSO:
-     * 1. Verifique se o destino existe usando findById() do repository.
-     * Lance DestinationNotFoundException se não encontrar.
-     * 2. Delete o destino usando destinationRepository.deleteById(id).
-     * <p>
-     * DICA: Sempre verifique se o recurso existe antes de deletar.
-     * O deleteById() do JpaRepository não lança exceção se o ID não existir,
-     * então sem essa verificação o DELETE de um ID inexistente retornaria 200 OK
-     * em vez de 404 Not Found — o que seria incorreto.
-     * <p>
-     * BOAS PRÁTICAS:
-     * - Métodos de delete geralmente retornam void.
-     * - O controller deve retornar HTTP 204 No Content para deleções bem-sucedidas.
-     */
     public void delete(final Long id) {
-        throw new UnsupportedOperationException("Implemente a exclusão de destino.");
+        if (!destinationRepository.existsById(id)) {
+            throw new NoSuchElementException("Destination with ID " + id + " not found");
+        }
+        destinationRepository.deleteById(id);
     }
 
 }

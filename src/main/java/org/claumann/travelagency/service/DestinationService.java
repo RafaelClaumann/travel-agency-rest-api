@@ -1,5 +1,6 @@
 package org.claumann.travelagency.service;
 
+import org.claumann.travelagency.controller.dto.in.DestinationRequest;
 import org.claumann.travelagency.exception.DestinationNotFoundException;
 import org.claumann.travelagency.model.Destination;
 import org.claumann.travelagency.repository.DestinationRepository;
@@ -21,7 +22,7 @@ public class DestinationService {
         this.destinationMapper = destinationMapper;
     }
 
-    public Destination create(final Destination destination) {
+    public Destination create(final DestinationRequest destination) {
         var entity = destinationMapper.toEntity(destination);
         entity.setAverageRating(0.0);
         entity.setTotalRatings(0);

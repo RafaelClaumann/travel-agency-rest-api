@@ -3,6 +3,7 @@ package org.claumann.travelagency.service;
 import org.claumann.travelagency.exception.DestinationNotFoundException;
 import org.claumann.travelagency.model.Destination;
 import org.claumann.travelagency.repository.DestinationRepository;
+import org.claumann.travelagency.repository.entity.DestinationEntity;
 import org.claumann.travelagency.repository.mapper.DestinationMapper;
 import org.springframework.stereotype.Service;
 
@@ -39,7 +40,7 @@ public class DestinationService {
     }
 
     public Destination findById(final Long id) {
-        var entity = destinationRepository.findById(id).orElseThrow(() -> new DestinationNotFoundException(id));
+        var entity = getDestinationEntityById(id);
         return destinationMapper.toModel(entity);
     }
 
@@ -48,7 +49,7 @@ public class DestinationService {
             throw new IllegalArgumentException("Rating must be between 1 and 10.");
         }
 
-        var entity = destinationRepository.findById(id).orElseThrow(() -> new DestinationNotFoundException(id));
+        var entity = getDestinationEntityById(id);
 
         double currentAverageRating = entity.getAverageRating();
         Integer totalRatings = entity.getTotalRatings();
@@ -62,10 +63,12 @@ public class DestinationService {
     }
 
     public void delete(final Long id) {
-        if (!destinationRepository.existsById(id)) {
-            throw new DestinationNotFoundException(id);
-        }
+        getDestinationEntityById(id);
         destinationRepository.deleteById(id);
+    }
+
+    private DestinationEntity getDestinationEntityById(Long id) {
+        return destinationRepository.findById(id).orElseThrow(() -> new DestinationNotFoundException(id));
     }
 
 }

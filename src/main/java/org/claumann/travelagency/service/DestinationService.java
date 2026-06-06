@@ -8,6 +8,7 @@ import org.claumann.travelagency.repository.mapper.DestinationMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DestinationService {
@@ -22,6 +23,8 @@ public class DestinationService {
 
     public Destination create(final Destination destination) {
         var entity = destinationMapper.toEntity(destination);
+        entity.setAverageRating(0.0);
+        entity.setTotalRatings(0);
         var savedEntity = destinationRepository.save(entity);
         return destinationMapper.toModel(savedEntity);
     }
@@ -51,8 +54,8 @@ public class DestinationService {
 
         var entity = getDestinationEntityById(id);
 
-        double currentAverageRating = entity.getAverageRating();
-        Integer totalRatings = entity.getTotalRatings();
+        double currentAverageRating = Optional.ofNullable(entity.getAverageRating()).orElse(0.0);
+        int totalRatings = Optional.ofNullable(entity.getTotalRatings()).orElse(0);
 
         double newAverageRating = ((currentAverageRating * totalRatings) + rating) / (totalRatings + 1);
         entity.setAverageRating(newAverageRating);

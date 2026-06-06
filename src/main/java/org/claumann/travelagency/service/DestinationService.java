@@ -6,6 +6,7 @@ import org.claumann.travelagency.repository.mapper.DestinationMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 public class DestinationService {
@@ -37,27 +38,10 @@ public class DestinationService {
                 .toList();
     }
 
-    /**
-     * Retorna um destino específico pelo ID.
-     * <p>
-     * PASSO A PASSO:
-     * 1. Use destinationRepository.findById(id) para buscar o destino.
-     * Ele retorna um Optional<DestinationEntity>.
-     * 2. Se não encontrar, lance uma exceção:
-     * throw new DestinationNotFoundException(id)
-     * 3. Se encontrar, converta a entity para model e retorne.
-     * <p>
-     * DICA: O Optional tem um método chamado orElseThrow() que faz exatamente isso:
-     * retorna o valor se presente ou lança uma exceção se vazio.
-     * Exemplo: repository.findById(id).orElseThrow(() -> new DestinationNotFoundException(id))
-     * <p>
-     * BOAS PRÁTICAS:
-     * - Nunca retorne null quando não encontrar — sempre lance uma exceção.
-     * - A exceção deve ser do tipo RuntimeException para o Spring conseguir capturá-la
-     * automaticamente no @RestControllerAdvice.
-     */
     public Destination findById(final Long id) {
-        throw new UnsupportedOperationException("Implemente a busca por ID.");
+        var entity = destinationRepository.findById(id)
+                .orElseThrow(() -> new NoSuchElementException("Destination with ID " + id + " not found"));
+        return destinationMapper.toModel(entity);
     }
 
     /**

@@ -30,24 +30,11 @@ public class DestinationService {
                 .toList();
     }
 
-    /**
-     * Pesquisa destinos por nome ou localização.
-     * <p>
-     * PASSO A PASSO:
-     * 1. Use o método customizado do repository:
-     * destinationRepository.findByNameContainingIgnoreCaseOrLocationContainingIgnoreCase(name, location)
-     * 2. Converta a lista de entities para models (mesmo esquema do findAll).
-     * 3. Retorne a lista de models.
-     * <p>
-     * DICA: O método do repository já faz a pesquisa case-insensitive e parcial,
-     * ou seja, pesquisar "rio" vai encontrar "Rio de Janeiro".
-     * <p>
-     * BOAS PRÁTICAS:
-     * - Não filtre a lista manualmente aqui no service — deixe o banco fazer o trabalho.
-     * - Se nenhum resultado for encontrado, retorne lista vazia (o repository já faz isso).
-     */
     public List<Destination> search(final String name, final String location) {
-        throw new UnsupportedOperationException("Implemente a pesquisa de destinos.");
+        return destinationRepository.findByNameContainingIgnoreCaseOrLocationContainingIgnoreCase(name, location)
+                .stream()
+                .map(destinationMapper::toModel)
+                .toList();
     }
 
     /**

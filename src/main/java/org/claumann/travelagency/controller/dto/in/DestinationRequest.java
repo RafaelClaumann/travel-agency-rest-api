@@ -1,5 +1,6 @@
 package org.claumann.travelagency.controller.dto.in;
 
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,8 +10,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class DestinationRequest {
 
+    @NotBlank(message = "Name is required")
     private String name;
-    private String location;
-    private String description;
 
+    @NotBlank(message = "Location is required")
+    private String location;
+
+    private String description;
 }

@@ -1,5 +1,6 @@
 package org.claumann.travelagency.controller;
 
+import jakarta.validation.Valid;
 import org.claumann.travelagency.controller.dto.in.DestinationRequest;
 import org.claumann.travelagency.controller.dto.in.RatingRequest;
 import org.claumann.travelagency.model.Destination;
@@ -29,7 +30,7 @@ public class DestinationController {
     }
 
     @PostMapping
-    public ResponseEntity<Destination> create(@RequestBody DestinationRequest request) {
+    public ResponseEntity<Destination> create(@RequestBody @Valid DestinationRequest request) {
         var created = destinationService.create(request);
         return ResponseEntity.status(HttpStatus.CREATED).body(created);
     }
@@ -52,7 +53,7 @@ public class DestinationController {
     }
 
     @PatchMapping("/{id}/rating")
-    public ResponseEntity<Destination> rate(@PathVariable Long id, @RequestBody RatingRequest request) {
+    public ResponseEntity<Destination> rate(@PathVariable Long id, @RequestBody @Valid RatingRequest request) {
         return ResponseEntity.ok(destinationService.rate(id, request.getRating()));
     }
 

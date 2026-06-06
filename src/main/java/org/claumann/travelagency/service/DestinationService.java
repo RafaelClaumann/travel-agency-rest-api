@@ -37,7 +37,7 @@ public class DestinationService {
     }
 
     public List<Destination> search(final String name, final String location) {
-        return destinationRepository.findByNameContainingIgnoreCaseOrLocationContainingIgnoreCase(name, location)
+        return destinationRepository.searchByNameOrLocation(name, location)
                 .stream()
                 .map(destinationMapper::toModel)
                 .toList();

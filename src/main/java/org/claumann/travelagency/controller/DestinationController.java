@@ -41,8 +41,8 @@ public class DestinationController {
 
     @GetMapping("/search")
     public ResponseEntity<List<Destination>> search(
-            @RequestParam(required = false, defaultValue = "") String name,
-            @RequestParam(required = false, defaultValue = "") String location) {
+            @RequestParam(required = false) String name,
+            @RequestParam(required = false) String location) {
         return ResponseEntity.ok(destinationService.search(name, location));
     }
 

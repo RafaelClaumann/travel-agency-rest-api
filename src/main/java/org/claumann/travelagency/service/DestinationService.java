@@ -24,23 +24,10 @@ public class DestinationService {
         return destinationMapper.toModel(savedEntity);
     }
 
-    /**
-     * Retorna todos os destinos cadastrados.
-     * <p>
-     * PASSO A PASSO:
-     * 1. Busque todos os destinos usando destinationRepository.findAll().
-     * 2. Converta a lista de entities para uma lista de models.
-     * DICA: Use stream() + map() + toList() para converter a lista inteira de uma vez.
-     * Exemplo: lista.stream().map(destinationMapper::toModel).toList()
-     * 3. Retorne a lista de models.
-     * <p>
-     * BOAS PRÁTICAS:
-     * - Nunca retorne uma lista de entities diretamente — sempre converta para model.
-     * - Se não houver destinos, retorne uma lista vazia, nunca null.
-     * O findAll() já faz isso por padrão.
-     */
     public List<Destination> findAll() {
-        throw new UnsupportedOperationException("Implemente a listagem de destinos.");
+        return destinationRepository.findAll().stream()
+                .map(destinationMapper::toModel)
+                .toList();
     }
 
     /**

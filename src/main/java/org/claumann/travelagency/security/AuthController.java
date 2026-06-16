@@ -24,14 +24,14 @@ public class AuthController {
     }
 
     @PostMapping
-    public ResponseEntity<UserDetails> login(@RequestBody final AuthRequest authRequest) {
+    public ResponseEntity<AuthResponse> login(@RequestBody final AuthRequest authRequest) {
         var authentication = new UsernamePasswordAuthenticationToken(authRequest.username(), authRequest.password());
         var authenticate = authenticationManager.authenticate(authentication);
 
         var principal = (UserDetails) authenticate.getPrincipal();
         log.info("Generated token [{}]", tokenService.generateToken(principal));
 
-        return ResponseEntity.ok(principal);
+        return ResponseEntity.ok(new AuthResponse(tokenService.generateToken(principal)));
     }
 
 }

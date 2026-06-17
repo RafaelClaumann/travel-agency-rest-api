@@ -1,0 +1,25 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: travel-postgres
+    environment:
+      POSTGRES_DB: traveldb
+      POSTGRES_USER: travel
+      POSTGRES_PASSWORD: travel
+    ports:
+      - "5432:5432"
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: travel-pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+      PGADMIN_CONFIG_SERVER_MODE: "False"
+      PGADMIN_CONFIG_MASTER_PASSWORD_REQUIRED: "False"
+    ports:
+      - "5050:80"
+    volumes:
+      - ./pgadmin-servers.json:/pgadmin4/servers.json
+    depends_on:
+      - postgres

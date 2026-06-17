@@ -1,6 +1,7 @@
 package org.claumann.travelagency.security;
 
 import com.nimbusds.jose.jwk.source.ImmutableSecret;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.oauth2.jose.jws.MacAlgorithm;
 import org.springframework.security.oauth2.jwt.JwsHeader;
@@ -17,6 +18,7 @@ import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 import java.nio.charset.StandardCharsets;
 import java.time.Instant;
+import java.util.List;
 
 @Service
 public class TokenService {
@@ -38,10 +40,16 @@ public class TokenService {
         Instant issuedAt = Instant.now();
         Instant expiresAt = issuedAt.plusMillis(EXPIRATION_IN_MILLIS);
 
+        List<String> roles = user.getAuthorities()
+                .stream()
+                .map(GrantedAuthority::getAuthority)
+                .toList();
+
         JwtClaimsSet claims = JwtClaimsSet.builder()
                 .subject(user.getUsername())
                 .issuedAt(issuedAt)
                 .expiresAt(expiresAt)
+                .claim("role", roles.getFirst())
                 .build();
 
         JwsHeader header = JwsHeader.with(MacAlgorithm.HS256).build();

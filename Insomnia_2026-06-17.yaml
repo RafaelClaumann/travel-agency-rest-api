@@ -1,0 +1,514 @@
+type: collection.insomnia.rest/5.0
+schema_version: "5.1"
+name: Scratch Pad
+meta:
+  id: wrk_scratchpad
+  created: 1780707165537
+  modified: 1780707165537
+  description: ""
+collection:
+  - name: travel
+    meta:
+      id: fld_2de983eba4e24582b8209ed5702f6025
+      created: 1780707187223
+      modified: 1780707709462
+      sortKey: -1780707187223
+      description: ""
+    children:
+      - url: http://localhost:8080/destination
+        name: create destination
+        meta:
+          id: req_c97d11cf213d467bbaf1198701def514
+          created: 1780707195567
+          modified: 1780707231689
+          isPrivate: false
+          description: ""
+          sortKey: -1780707195567
+        method: POST
+        body:
+          mimeType: application/json
+          text: '{     "name": "Gramado",     "location": "Rio Grande do Sul,
+            Brasil",     "description": "Cidade serrana com arquitetura europeia
+            e clima frio."   }'
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.6.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/destination
+        name: list destinations
+        meta:
+          id: req_46a4a0cfaf06409991d55945d92a381d
+          created: 1780707219112
+          modified: 1780707234141
+          isPrivate: false
+          description: ""
+          sortKey: -1780707195467
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/12.6.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/destination/search
+        name: search by name 'gramado'
+        meta:
+          id: req_ec1fd9565e49475b8cc0251f12d43a5d
+          created: 1780707251817
+          modified: 1780707372525
+          isPrivate: false
+          description: ""
+          sortKey: -1780707195367
+        method: GET
+        parameters:
+          - name: name
+            value: Gramado
+            disabled: false
+        headers:
+          - name: User-Agent
+            value: insomnia/12.6.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/destination/search
+        name: search by location 'Rio Grande do Sul'
+        meta:
+          id: req_a481e770636a4b2f94ec9693dbfb6cda
+          created: 1780707285876
+          modified: 1780707365965
+          isPrivate: false
+          description: ""
+          sortKey: -1780707195267
+        method: GET
+        parameters:
+          - name: location
+            value: Rio Grande do Sul
+            disabled: false
+        headers:
+          - name: User-Agent
+            value: insomnia/12.6.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/destination/search
+        name: search by name 'Gramado' location 'Rio Grande do Sul'
+        meta:
+          id: req_683642fd3ab243ba8b7e0feef8fb41d0
+          created: 1780707327966
+          modified: 1780707352483
+          isPrivate: false
+          description: ""
+          sortKey: -1780707195167
+        method: GET
+        parameters:
+          - name: name
+            value: Gramado
+            disabled: false
+          - name: location
+            value: Rio Grande do Sul
+            disabled: false
+        headers:
+          - name: User-Agent
+            value: insomnia/12.6.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/destination/1
+        name: get by id 1
+        meta:
+          id: req_0b3b83b25739488e9892e506f44a605a
+          created: 1780707402912
+          modified: 1781622029035
+          isPrivate: false
+          description: ""
+          sortKey: -1780707195067
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/12.6.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/destination/1/rating
+        name: set rating destination 1 to 9.5
+        meta:
+          id: req_50c599fc5e76431a92fd1ce4228fb5da
+          created: 1780707426895
+          modified: 1780707463933
+          isPrivate: false
+          description: ""
+          sortKey: -1780707194967
+        method: PATCH
+        body:
+          mimeType: application/json
+          text: '{     "rating": 9.5   }'
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.6.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - name: security
+        meta:
+          id: fld_a61be4178176428ca4990fd0ba87e1fa
+          created: 1781191201328
+          modified: 1781191201328
+          sortKey: -1781191201328
+          description: ""
+        children:
+          - url: http://localhost:8080/auth/login
+            name: auth login admin
+            meta:
+              id: req_237a6cc635e5402eb84e77ac94d42c26
+              created: 1781191222292
+              modified: 1781711127456
+              isPrivate: false
+              description: ""
+              sortKey: -1781191222292
+            method: POST
+            body:
+              mimeType: application/json
+              text: |-
+                {
+                	"username": "admin",
+                	"password": "admin123"
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/12.6.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8080/destination/1
+            name: "[auth] get by id 1"
+            meta:
+              id: req_bf33a2fd263b4ded8390c92e2d6261ed
+              created: 1781622020103
+              modified: 1781711220347
+              isPrivate: false
+              description: ""
+              sortKey: -1781191222192
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/12.6.0
+              - name: Content-Type
+                value: application/json
+              - name: Authorization
+                value: Bearer {% response 'body', 'req_237a6cc635e5402eb84e77ac94d42c26',
+                  'b64::JC5qd3RUb2tlbg==::46b', 'never', 60 %}
+              - name: Authorization
+                value: Bearer {% response 'body', 'req_770d57b80396485a809d96fde3ce23f8',
+                  'b64::JC5qd3RUb2tlbg==::46b', 'never', 60 %}
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8080/destination
+            name: "[auth] list destinations"
+            meta:
+              id: req_fbb3b751d03348fba4837954662c7811
+              created: 1781623255894
+              modified: 1781712053170
+              isPrivate: false
+              description: ""
+              sortKey: -1781191222242
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/12.6.0
+              - name: Content-Type
+                value: application/json
+              - name: Authorization
+                value: Bearer {% response 'body', 'req_237a6cc635e5402eb84e77ac94d42c26',
+                  'b64::JC5qd3RUb2tlbg==::46b', 'never', 60 %}
+                disabled: true
+              - name: Authorization
+                value: Bearer {% response 'body', 'req_770d57b80396485a809d96fde3ce23f8',
+                  'b64::JC5qd3RUb2tlbg==::46b', 'never', 60 %}
+                disabled: true
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8080/destination/search
+            name: "[auth]  search by name 'gramado'"
+            meta:
+              id: req_8d3adffba3914dd483348cff77655d1c
+              created: 1781623472132
+              modified: 1781711214675
+              isPrivate: false
+              description: ""
+              sortKey: -1781191222217
+            method: GET
+            parameters:
+              - name: name
+                value: Gramado
+                disabled: false
+            headers:
+              - name: User-Agent
+                value: insomnia/12.6.0
+              - name: Content-Type
+                value: application/json
+              - name: Authorization
+                value: Bearer {% response 'body', 'req_237a6cc635e5402eb84e77ac94d42c26',
+                  'b64::JC5qd3RUb2tlbg==::46b', 'never', 60 %}
+              - name: Authorization
+                value: Bearer {% response 'body', 'req_770d57b80396485a809d96fde3ce23f8',
+                  'b64::JC5qd3RUb2tlbg==::46b', 'never', 60 %}
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8080/destination/search
+            name: "[auth] search by location 'Rio Grande do Sul'"
+            meta:
+              id: req_0de2d0d6db8c4028b72f109b17e9cf73
+              created: 1781623492300
+              modified: 1781711216811
+              isPrivate: false
+              description: ""
+              sortKey: -1781191222204.5
+            method: GET
+            parameters:
+              - name: location
+                value: Rio Grande do Sul
+                disabled: false
+            headers:
+              - name: User-Agent
+                value: insomnia/12.6.0
+              - name: Content-Type
+                value: application/json
+              - name: Authorization
+                value: Bearer {% response 'body', 'req_237a6cc635e5402eb84e77ac94d42c26',
+                  'b64::JC5qd3RUb2tlbg==::46b', 'never', 60 %}
+              - name: Authorization
+                value: Bearer {% response 'body', 'req_770d57b80396485a809d96fde3ce23f8',
+                  'b64::JC5qd3RUb2tlbg==::46b', 'never', 60 %}
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8080/destination/search
+            name: "[auth] search by name 'Gramado' location 'Rio Grande do Sul'"
+            meta:
+              id: req_e25620f701ee4f64a01e88cf81edc849
+              created: 1781623514687
+              modified: 1781711218725
+              isPrivate: false
+              description: ""
+              sortKey: -1781191222198.25
+            method: GET
+            parameters:
+              - name: name
+                value: Gramado
+                disabled: false
+              - name: location
+                value: Rio Grande do Sul
+                disabled: false
+            headers:
+              - name: User-Agent
+                value: insomnia/12.6.0
+              - name: Content-Type
+                value: application/json
+              - name: Authorization
+                value: Bearer {% response 'body', 'req_237a6cc635e5402eb84e77ac94d42c26',
+                  'b64::JC5qd3RUb2tlbg==::46b', 'never', 60 %}
+              - name: Authorization
+                value: Bearer {% response 'body', 'req_770d57b80396485a809d96fde3ce23f8',
+                  'b64::JC5qd3RUb2tlbg==::46b', 'never', 60 %}
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8080/destination/1/rating
+            name: "[auth] set rating destination 1 to 9.5"
+            meta:
+              id: req_b39865f988f64a508809608a143e6f24
+              created: 1781623530297
+              modified: 1781711222280
+              isPrivate: false
+              description: ""
+              sortKey: -1781191222092
+            method: PATCH
+            body:
+              mimeType: application/json
+              text: |-
+                {
+                	"rating": 9.5
+                }
+            headers:
+              - name: User-Agent
+                value: insomnia/12.6.0
+              - name: Content-Type
+                value: application/json
+              - name: Authorization
+                value: Bearer {% response 'body', 'req_237a6cc635e5402eb84e77ac94d42c26',
+                  'b64::JC5qd3RUb2tlbg==::46b', 'never', 60 %}
+              - name: Authorization
+                value: Bearer {% response 'body', 'req_770d57b80396485a809d96fde3ce23f8',
+                  'b64::JC5qd3RUb2tlbg==::46b', 'never', 60 %}
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8080/auth/login
+            name: auth login user
+            meta:
+              id: req_770d57b80396485a809d96fde3ce23f8
+              created: 1781711134547
+              modified: 1781711160748
+              isPrivate: false
+              description: ""
+              sortKey: -1781191222267
+            method: POST
+            body:
+              mimeType: application/json
+              text: |-
+                {
+                	"username": "user",
+                	"password": "user123"
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/12.6.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8080/destination
+            name: "[auth] create destination"
+            meta:
+              id: req_81f0898fe790435ea6a5acff9f69d739
+              created: 1781711239775
+              modified: 1781712067028
+              isPrivate: false
+              description: ""
+              sortKey: -1781191222254.5
+            method: POST
+            body:
+              mimeType: application/json
+              text: '{     "name": "Gramado",     "location": "Rio Grande do Sul,
+                Brasil",     "description": "Cidade serrana com arquitetura
+                europeia e clima frio."   }'
+            headers:
+              - name: User-Agent
+                value: insomnia/12.6.0
+              - name: Content-Type
+                value: application/json
+              - name: Authorization
+                value: Bearer {% response 'body', 'req_237a6cc635e5402eb84e77ac94d42c26',
+                  'b64::JC5qd3RUb2tlbg==::46b', 'never', 60 %}
+                disabled: true
+              - name: Authorization
+                value: Bearer {% response 'body', 'req_770d57b80396485a809d96fde3ce23f8',
+                  'b64::JC5qd3RUb2tlbg==::46b', 'never', 60 %}
+                disabled: true
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_99d30891da4bdcebc63947a8fc17f076de878684
+    created: 1780707175160
+    modified: 1781712060476
+  cookies:
+    - id: 7d18b329-eae2-4612-931b-d2b8946608d2
+      key: JSESSIONID
+      value: 7DC390D9E4F60F89042FBB31CE4D225F
+      domain: localhost
+      path: /
+      secure: false
+      httpOnly: true
+      hostOnly: true
+environments:
+  name: Base Environment
+  meta:
+    id: env_99d30891da4bdcebc63947a8fc17f076de878684
+    created: 1780707175150
+    modified: 1780707175150
+    isPrivate: false
